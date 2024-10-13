@@ -1,0 +1,43 @@
+---
+import "@fontsource-variable/oswald";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const themeSwitcher = "dark";
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html class={themeSwitcher} lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div
+      class="fixed inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#171717_40%,#a855f7_100%)]"
+    >
+    </div>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light dark;
+  }
+
+  html {
+    font-family: "Oswald", system-ui, sans-serif;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+</style>
